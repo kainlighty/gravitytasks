@@ -1,0 +1,30 @@
+.task-sidebar__item {
+  display:               grid;
+  grid-template-columns: 150px 1fr;
+  align-items:           center;
+
+  &-label {
+    color: var(--g-color-text-secondary);
+
+    &::after {
+      content: ":"
+    }
+  }
+
+  &-value {
+    display: flex;
+    align-items: center;
+    gap: var(--g-spacing-1);
+  }
+
+  &--deadline {
+    input {
+      field-sizing: content;
+      min-width: 80px;
+    }
+  }
+
+  &--description {
+    align-items: start;
+  }
+}

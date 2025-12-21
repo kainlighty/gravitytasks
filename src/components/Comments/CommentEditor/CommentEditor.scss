@@ -1,0 +1,22 @@
+.comments__editor {
+  display: flex;
+  flex-direction: column;
+  gap: var(--g-spacing-2);
+  flex-shrink: 0;
+}
+
+.comments__input {
+  .g-text-area__content {
+    border: none;
+    border-top: var(--_--border-width) solid var(--_--border-color);
+    --_--border-radius: 0;
+    padding-top: var(--g-spacing-2);
+  }
+}
+
+.comments__actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--g-spacing-2);
+}

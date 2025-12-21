@@ -1,0 +1,127 @@
+:root {
+  --bg-0:     #070A12;
+  --bg-1:     #0B1020;
+  --green-cyan: 120 80% 60%;
+  --purple: 280 85% 65%;
+  --amber: 35 90% 60%;
+}
+
+.g-root {
+  color:                 #E8ECFF;
+  background:
+                         radial-gradient(900px 600px at 15% 10%, hsla(var(--purple) / 0.18), transparent 60%),
+                         radial-gradient(800px 520px at 85% 20%, hsla(var(--green-cyan) / 0.16), transparent 60%),
+                         radial-gradient(700px 520px at 60% 90%, hsla(var(--amber) / 0.10), transparent 60%),
+                         radial-gradient(1200px 900px at 50% 40%, rgba(255, 255, 255, 0.06), transparent 65%),
+                         linear-gradient(180deg, var(--bg-0), var(--bg-1));
+
+  background-attachment: fixed;
+  overflow-x:            hidden;
+}
+
+html, body, #app {
+  width:  100%;
+  height: 100%;
+}
+
+.app > *[class] {
+  height: 100%;
+}
+
+body::before {
+  content:         "";
+  position:        fixed;
+  inset:           0;
+  pointer-events:  none;
+
+  background:      linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+                   linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+
+  background-size: 48px 48px;
+  opacity:         0.08;
+
+  filter:          blur(0.2px);
+}
+
+body::after {
+  content:        "";
+  position:       fixed;
+  inset:          0;
+  pointer-events: none;
+  opacity:        0.06;
+  mix-blend-mode: overlay;
+  background:     repeating-linear-gradient(
+                          0deg,
+                          rgba(255, 255, 255, 0.08) 0px,
+                          rgba(255, 255, 255, 0.08) 1px,
+                          transparent 2px,
+                          transparent 4px
+                  ),
+                  repeating-linear-gradient(
+                          90deg,
+                          rgba(0, 0, 0, 0.20) 0px,
+                          rgba(0, 0, 0, 0.20) 1px,
+                          transparent 2px,
+                          transparent 6px
+                  );
+}
+
+.task-card {
+  background:      rgba(255, 255, 255, 0.06);
+  border:          1px solid rgba(255, 255, 255, 0.10);
+  box-shadow:      0 10px 30px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+  padding:         var(--g-spacing-4);
+  border-radius:   var(--g-border-radius-xl);
+}
+
+.wrapper {
+  --wrapperColumns: 1fr;
+
+  display:               grid;
+  grid-template-columns: var(--wrapperColumns);
+  gap:                   var(--g-spacing-6);
+  padding:               var(--g-spacing-6);
+
+  &:has(.task-sidebar) {
+    --wrapperColumns: 1fr 1fr;
+  }
+}
+
+/*
+.tasks-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-bottom: var(--g-spacing-6);
+
+  &__box {
+    background: var(--g-color-private-yellow-550-solid);
+    color: #000;
+    padding: 10px 30px;
+    border: 2px solid black;
+    transform: rotate(-2deg);
+    box-shadow: 6px 6px 0 #000;
+    z-index: 2;
+  }
+
+  &__text {
+    font-size: 4rem;
+    margin: 0;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+
+  &__subtitle {
+    font-size: 1.5rem;
+    background: #000;
+    color: #fff;
+    padding: 5px 15px;
+    transform: rotate(2deg) translateY(-10px);
+    display: inline-block;
+    border: 2px solid var(--g-color-private-yellow-550-solid);
+  }
+}*/

@@ -1,0 +1,33 @@
+.task-sidebar__title {
+  &-text {
+    @mixin title-font {
+      font-size: var(--g-text-subheader-3-font-size);
+      font-weight: var(--g-text-subheader-font-weight);
+    }
+
+    @include title-font;
+
+    white-space:    nowrap;
+    overflow:       hidden;
+    text-overflow:  ellipsis;
+
+    border-radius: var(--g-border-radius-s);
+    padding: var(--g-spacing-1) var(--g-spacing-2);
+    transition: border 0.08s ease-in-out;
+    border: 1px solid transparent;
+
+    &:hover {
+      border-color: var(--g-color-line-generic);
+    }
+  }
+
+  &-edit {
+    width: 100%;
+    max-width: 300px;
+
+    .g-text-input__control {
+      font-size: var(--g-text-subheader-3-font-size);
+      font-weight: var(--g-text-subheader-font-weight);
+    }
+  }
+}

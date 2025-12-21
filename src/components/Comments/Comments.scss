@@ -1,0 +1,7 @@
+.comments {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  //gap: var(--g-spacing-2);
+}

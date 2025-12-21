@@ -1,0 +1,11 @@
+.tag-manager {
+  display: flex;
+  align-items: center;
+  gap: var(--g-spacing-1);
+  flex-wrap: wrap;
+
+  &__add-btn {
+    opacity: 0.6;
+    &:hover { opacity: 1; }
+  }
+}

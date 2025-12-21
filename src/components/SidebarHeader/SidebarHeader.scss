@@ -1,0 +1,23 @@
+.task-sidebar__header {
+  display:         flex;
+  flex-direction:  row;
+  align-items:     center;
+  justify-content: space-between;
+}
+
+.task-sidebar__title-row {
+  display:        flex;
+  flex-direction: row;
+  align-items:    center;
+  gap:            var(--g-spacing-1);
+  flex:           1;
+  min-width:      0;
+}
+
+.task-sidebar__title-icon {
+  color: var(--g-color-text-secondary);
+
+  &--important {
+    color: var(--g-color-base-warning-medium);
+  }
+}

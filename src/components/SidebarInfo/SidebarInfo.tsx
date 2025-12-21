@@ -1,0 +1,90 @@
+import React, { memo, useCallback, useEffect, useMemo, useState } from 'react'
+import { useTaskStore } from "@/store/useTaskStore";
+import useDebounce from "@/hooks/useDebounce";
+import { dateTime } from "@gravity-ui/date-utils";
+import { DateField } from "@gravity-ui/date-components";
+import { TextArea } from "@gravity-ui/uikit";
+import './SidebarInfo.scss'
+import SidebarItem from "@/components/SidebarItem";
+import TagManager from "@/components/TagManager";
+
+export const SidebarInfo = memo(() => {
+    const selectedTaskId = useTaskStore(s => s.selectedTaskId);
+    const task = useTaskStore(s =>
+      s.tasks.find(t => t.id === selectedTaskId)
+    );
+    const updateTask = useTaskStore(s => s.updateTask);
+
+    const [description, setDescription] = useState('');
+
+    useEffect(() => {
+        if (task) {
+            setDescription(task.description ?? '');
+        }
+    }, [selectedTaskId]);
+
+    const debouncedUpdateDesc = useDebounce((val: string) => {
+        if (task && val !== (task.description ?? '')) {
+            updateTask(task.id, { description: val.trimStart() }).catch(console.error);
+        }
+    }, 400);
+
+    const handleDescUpdate = useCallback((val: string) => {
+        setDescription(val);
+        debouncedUpdateDesc(val);
+    }, [debouncedUpdateDesc]);
+
+    // const deadline = task.deadline ? dateTime({ input: task.deadline, format: 'DD.MM.YYYY' }) : undefined;
+
+    if (!task) return null;
+
+    const deadline = useMemo(() => {
+        return task.deadline ? dateTime({ input: task.deadline, format: 'DD.MM.YYYY' }) : undefined
+    }, [task.deadline])
+
+    return (
+      <div className="task-sidebar__info">
+          <SidebarItem label="ID" value={task.id}/>
+          <SidebarItem
+            className="task-sidebar__item--deadline"
+            label="Дедлайн"
+            value={
+                <DateField
+                  view="clear"
+                  size="s"
+                  placeholder="—"
+                  value={deadline}
+                  onUpdate={(dt) => updateTask(task.id, { deadline: dt?.format('DD.MM.YYYY') ?? null })}
+                  hasClear
+                />
+            }
+          />
+          <SidebarItem
+            label="Теги"
+            value={
+              <TagManager
+                tags={task.tags ?? []}
+                onUpdate={(tags: string[]) => updateTask(task.id, { tags })}
+              />
+          }
+          />
+          <SidebarItem label="Обновлено" value={task.updatedAt}/>
+          <SidebarItem label="Создано" value={task.createdAt}/>
+          <SidebarItem
+            className="task-sidebar__item--description"
+            label="Описание"
+            value={
+                <TextArea
+                  view="clear"
+                  value={description}
+                  onUpdate={handleDescUpdate}
+                  autoFocus={false}
+                  placeholder="—"
+                  rows={3}
+                  hasClear
+                />
+            }
+          />
+      </div>
+    );
+})

@@ -1,0 +1,21 @@
+{
+  tasks: [
+    {
+      name: 'Разобрать PR #1',
+      deadline: '01.01.2026',
+      tags: ['API'],
+      important: true,
+      description: 'Прям ну очень важно',
+      id: '1',
+      createdAt: '01.01.2000 00:00:00',
+      updatedAt: '01.01.2000 00:00:00',
+      completed: false,
+      comments: [
+        {
+          id: '29c62670-4e43-4f52-92a5-80d09ea58a88',
+          text: 'Привет :)'
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+.tasks-list {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--g-spacing-4);
+  min-width:      300px;
+
+  &__header {
+    display:         flex;
+    flex-direction:  row;
+    justify-content: space-between;
+    align-items:     center;
+    gap:             var(--g-spacing-2);
+  }
+
+  &__actions {
+    display:        flex;
+    flex-direction: row;
+    gap:            var(--g-spacing-2);
+    align-items:    center;
+  }
+
+  &__items {
+    height: 100%;
+  }
+}

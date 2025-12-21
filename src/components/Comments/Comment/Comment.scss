@@ -1,0 +1,21 @@
+.task-comment {
+  display:         flex;
+  justify-content: space-between;
+  align-items:     center;
+  gap:             var(--g-spacing-2);
+  border-radius:    var(--g-border-radius-s);
+
+  &__text {
+    margin:        0;
+    overflow-wrap: break-word;
+    flex:          1;
+    white-space:   pre-wrap;
+    font-size:     var(--g-text-body-1-font-size);
+  }
+
+  &:not(:hover) {
+    .task-comment__delete {
+      opacity: 0;
+    }
+  }
+}
