@@ -1,5 +1,5 @@
 import React from 'react'
-import CommentProps from './types'
+import type { CommentProps } from './types'
 import { Button, Icon } from "@gravity-ui/uikit";
 import { TrashBin } from "@gravity-ui/icons";
 import clsx from "clsx";

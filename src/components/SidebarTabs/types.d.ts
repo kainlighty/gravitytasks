@@ -1,5 +1,3 @@
-type SidebarTabsProps = {
+export type SidebarTabsProps = {
     taskId: string;
 }
-
-export default SidebarTabsProps;

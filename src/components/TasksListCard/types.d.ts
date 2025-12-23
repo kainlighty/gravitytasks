@@ -1,5 +1,3 @@
-type TasksListCardProps = {
+export type TasksListCardProps = {
     onOpenAddForm: () => void;
 }
-
-export default TasksListCardProps;

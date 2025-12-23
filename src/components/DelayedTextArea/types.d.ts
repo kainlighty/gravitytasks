@@ -1,4 +1,4 @@
-import type {TextAreaProps} from '@gravity-ui/uikit';
+import type { TextAreaProps } from '@gravity-ui/uikit';
 
 export type DelayedTextAreaProps =
   Required<Pick<TextAreaProps, 'value' | 'onUpdate'>> &

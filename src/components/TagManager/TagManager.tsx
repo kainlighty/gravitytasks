@@ -1,5 +1,5 @@
 import React, { memo, useRef, useState } from 'react'
-import TagManagerProps from './types'
+import type { TagManagerProps } from './types'
 import { Button, Flex, Icon, Popup, TextInput } from "@gravity-ui/uikit";
 import { Plus } from "@gravity-ui/icons";
 import TagsLabels from "@/components/TagsLabels";

@@ -4,8 +4,8 @@ import { useToaster } from '@gravity-ui/uikit';
 import CommentsList from '@/components/Comments/CommentsList';
 import CommentEditor from '@/components/Comments/CommentEditor';
 import { useTaskStore } from '@/store/useTaskStore';
+import type { CommentsProps } from "@/components/Comments/types";
 import './Comments.scss';
-import CommentsProps from "@/components/Comments/types";
 
 const EMPTY_COMMENTS: TaskComment[] = [];
 
@@ -26,12 +26,12 @@ export const Comments = (props: CommentsProps) => {
     const deleteAllComments = useTaskStore((s) => s.deleteAllComments);
 
     const handleSend = useCallback(
-      async (text: string) => {
+      async(text: string) => {
           try {
               await addComment(taskId, text);
           } catch (e) {
               console.error('Ошибка при добавлении:', e);
-              toaster.add({name: 'comment-add-error', title: 'Ошибка при добавлении', theme: 'danger'});
+              toaster.add({ name: 'comment-add-error', title: 'Ошибка при добавлении', theme: 'danger' });
               throw e;
           }
       },
@@ -39,7 +39,7 @@ export const Comments = (props: CommentsProps) => {
     );
 
     const handleDeleteComment = useCallback(
-      async (commentId: string) => {
+      async(commentId: string) => {
           try {
               await deleteComment(taskId, commentId);
           } catch (e) {
@@ -54,11 +54,11 @@ export const Comments = (props: CommentsProps) => {
     );
 
     const handleClearAll = useCallback(
-      async () => {
+      async() => {
           if (!window.confirm('Удалить все комментарии?')) return;
           try {
               await deleteAllComments(taskId);
-              toaster.add({name: 'comment-delete-success', title: 'Все комментарии удалены', theme: 'success'});
+              toaster.add({ name: 'comment-delete-success', title: 'Все комментарии удалены', theme: 'success' });
           } catch (e) {
               console.error('Ошибка при очистке:', e);
           }
@@ -68,8 +68,8 @@ export const Comments = (props: CommentsProps) => {
 
     return (
       <div className="task-sidebar__comments comments">
-          <CommentsList comments={comments} onDelete={handleDeleteComment} />
-          <CommentEditor onSend={handleSend} onClearAll={handleClearAll} hasComments={comments.length > 0} />
+          <CommentsList comments={comments} onDelete={handleDeleteComment}/>
+          <CommentEditor onSend={handleSend} onClearAll={handleClearAll} hasComments={comments.length > 0}/>
       </div>
     );
 }

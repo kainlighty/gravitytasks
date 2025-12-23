@@ -1,8 +1,11 @@
+@use '@/styles/mixins' as *;
+
 .task-card {
-  background:      rgba(255, 255, 255, 0.06);
+  /*background:      rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);*/
+  @include glass-normal;
   border:          1px solid rgba(255, 255, 255, 0.10);
   box-shadow:      0 10px 30px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(10px);
   padding:         var(--g-spacing-4);
   border-radius:   var(--g-border-radius-xl);
 }

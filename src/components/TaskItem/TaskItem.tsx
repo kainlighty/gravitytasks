@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import TaskItemProps from './types'
+import type { TaskItemProps } from './types'
 import { useTaskStore } from "@/store/useTaskStore";
 import { Button, Checkbox, Icon, Label, Text } from "@gravity-ui/uikit";
 import { DiamondExclamationFill, TrashBin } from "@gravity-ui/icons";

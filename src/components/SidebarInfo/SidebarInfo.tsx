@@ -1,13 +1,11 @@
 import React, { memo, useCallback, useEffect, useMemo, useState } from 'react'
 import { useTaskStore } from "@/store/useTaskStore";
-import useDebounce from "@/hooks/useDebounce";
 import { dateTime } from "@gravity-ui/date-utils";
 import { DatePicker } from "@gravity-ui/date-components";
-import { TextArea } from "@gravity-ui/uikit";
-import './SidebarInfo.scss'
 import SidebarItem from "@/components/SidebarItem";
 import TagManager from "@/components/TagManager";
 import DelayedTextArea from "@/components/DelayedTextArea";
+import './SidebarInfo.scss'
 
 export const SidebarInfo = memo(() => {
     const selectedTaskId = useTaskStore(s => s.selectedTaskId);
@@ -32,7 +30,7 @@ export const SidebarInfo = memo(() => {
           const prev = (description ?? '');
 
           if (task && next !== prev) {
-              updateTask(task.id, {description: next}).catch(console.error);
+              updateTask(task.id, { description: next }).catch(console.error);
           }
 
 
@@ -69,11 +67,11 @@ export const SidebarInfo = memo(() => {
           <SidebarItem
             label="Теги"
             value={
-              <TagManager
-                tags={task.tags ?? []}
-                onUpdate={(tags) => updateTask(task.id, { tags })}
-              />
-          }
+                <TagManager
+                  tags={task.tags ?? []}
+                  onUpdate={(tags) => updateTask(task.id, { tags })}
+                />
+            }
           />
           <SidebarItem label="Обновлено" value={task.updatedAt}/>
           <SidebarItem label="Создано" value={task.createdAt}/>

@@ -2,9 +2,9 @@ import React, { memo } from 'react'
 import { useTaskStore } from "@/store/useTaskStore";
 import SidebarHeader from "@/components/SidebarHeader";
 import SidebarInfo from "@/components/SidebarInfo";
-import './TaskSidebarCard.scss'
 import SidebarTabs from "@/components/SidebarTabs";
 import TaskCard from "@/components/TaskCard";
+import './TaskSidebarCard.scss'
 
 export const TaskSidebarCard = memo(() => {
     const selectedTaskId = useTaskStore(s => s.selectedTaskId);

@@ -1,9 +1,10 @@
 // GPT
+// Не до конца знаю Zustand
 
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
-import { Task } from "@/types/Task";
-import { TaskPatch } from "@/types/api";
+import type { Task } from "@/types/Task";
+import type { TaskPatch } from "@/types/api";
 import {
     addCommentToDb,
     addTaskToDb,
@@ -42,14 +43,14 @@ export const useTaskStore = create<TaskState & TaskActions>()(
 
       selectTask: (id) => set({ selectedTaskId: id }),
 
-      fetchTasks: async () => {
+      fetchTasks: async() => {
           set({ isLoading: true });
           try {
               const tasks = await getTasksFromDb();
               set({
                   tasks: tasks.map(t => ({
                       ...t,
-                      id: String(t.id) ,
+                      id: String(t.id),
                       comments: t.comments ?? [],
                   })),
                   isLoading: false
@@ -59,7 +60,7 @@ export const useTaskStore = create<TaskState & TaskActions>()(
           }
       },
 
-      addTask: async (taskProto) => {
+      addTask: async(taskProto) => {
           const { tasks } = get();
 
           const maxId = tasks.reduce((max, t) => {
@@ -92,15 +93,17 @@ export const useTaskStore = create<TaskState & TaskActions>()(
           }
       },
 
-      updateTask: async (id, patch) => {
+      updateTask: async(id, patch) => {
           const { tasks } = get();
           const now = getDateTimeNow();
           const optimisticPatch = { ...patch, updatedAt: now };
 
-          set({ tasks: tasks.map(t => t.id === id ? {
-              ...t,
+          set({
+              tasks: tasks.map(t => t.id === id ? {
+                  ...t,
                   ...optimisticPatch
-          } : t) });
+              } : t)
+          });
 
           try {
               const updated = await patchTaskFromDb(id, optimisticPatch);
@@ -112,7 +115,7 @@ export const useTaskStore = create<TaskState & TaskActions>()(
           }
       },
 
-      deleteTask: async (id) => {
+      deleteTask: async(id) => {
           const { tasks, selectedTaskId } = get();
           set({
               tasks: tasks.filter(t => t.id !== id),
@@ -125,7 +128,7 @@ export const useTaskStore = create<TaskState & TaskActions>()(
           }
       },
 
-      deleteAllTasks: async () => {
+      deleteAllTasks: async() => {
           if (!confirm("Удалить все задачи?")) return;
           set({ tasks: [], selectedTaskId: null });
           try {
@@ -135,7 +138,7 @@ export const useTaskStore = create<TaskState & TaskActions>()(
           }
       },
 
-      addComment: async (taskId, text) => {
+      addComment: async(taskId, text) => {
           const task = get().tasks.find(t => t.id === taskId);
           if (!task) return;
           const newComments = await addCommentToDb(taskId, task.comments || [], text);
@@ -144,7 +147,7 @@ export const useTaskStore = create<TaskState & TaskActions>()(
           }));
       },
 
-      deleteComment: async (taskId, commentId) => {
+      deleteComment: async(taskId, commentId) => {
           const task = get().tasks.find(t => t.id === taskId);
           if (!task) return;
           const newComments = await deleteCommentFromDb(taskId, task.comments || [], commentId);
@@ -153,7 +156,7 @@ export const useTaskStore = create<TaskState & TaskActions>()(
           }));
       },
 
-      deleteAllComments: async (taskId) => {
+      deleteAllComments: async(taskId) => {
           await deleteAllCommentsFromTask(taskId);
           set(state => ({
               tasks: state.tasks.map(t => t.id === taskId ? { ...t, comments: [] } : t)

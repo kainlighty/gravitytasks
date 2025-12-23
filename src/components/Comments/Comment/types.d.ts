@@ -1,9 +1,7 @@
-import { TaskComment } from "@/types/Task";
+import type { TaskComment } from "@/types/Task";
 
-type CommentProps = {
+export type CommentProps = {
     className?: string;
     comment: TaskComment;
     handleDeleteComment: (id: string) => void;
 }
-
-export default CommentProps;

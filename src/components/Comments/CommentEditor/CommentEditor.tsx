@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import './CommentEditor.scss'
-import CommentEditorProps from './types'
+import type { CommentEditorProps } from './types'
 import { Button, DropdownMenu, TextArea } from "@gravity-ui/uikit";
+import './CommentEditor.scss'
 
 // TODO: Потом впилить https://gravity-ui.com/ru/libraries/markdown-editor
 

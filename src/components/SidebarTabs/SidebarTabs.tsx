@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import './SidebarTabs.scss'
-import SidebarTabsProps from './types'
+import type { SidebarTabsProps } from './types'
 import { Tab, TabList, TabPanel, TabProvider } from "@gravity-ui/uikit";
 import Comments from "@/components/Comments";
+import './SidebarTabs.scss'
 
 export const SidebarTabs = (props: SidebarTabsProps) => {
-    const {taskId} = props
+    const { taskId } = props
 
     const [activeTab, setActiveTab] = useState('comments');
 

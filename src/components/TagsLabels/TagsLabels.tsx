@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
-import './TagsLabels.scss'
-import TagsLabelsProps from './types'
+import type { TagsLabelsProps } from './types'
 import { Flex, Label } from "@gravity-ui/uikit";
+import './TagsLabels.scss'
 
 export const TagsLabels = memo((props: TagsLabelsProps) => {
     const { tags, onCloseClick } = props;

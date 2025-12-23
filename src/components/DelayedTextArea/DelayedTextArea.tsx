@@ -4,9 +4,9 @@
  * Перебивка: https://preview.gravity-ui.com/components/?path=/story/components-delayedtextinput--default
  */
 
-import { ChangeEvent, forwardRef, useCallback, useEffect, useRef, useState } from "react";
-import {TextArea} from '@gravity-ui/uikit';
-import type {DelayedTextAreaProps} from './types';
+import { type ChangeEvent, forwardRef, useCallback, useEffect, useRef, useState } from "react";
+import { TextArea } from '@gravity-ui/uikit';
+import type { DelayedTextAreaProps } from './types';
 
 export const DelayedTextArea = forwardRef<HTMLTextAreaElement, DelayedTextAreaProps>(
   (props, ref) => {
@@ -18,9 +18,9 @@ export const DelayedTextArea = forwardRef<HTMLTextAreaElement, DelayedTextAreaPr
           ...textAreaProps
       } = props;
 
-      const {hasClear} = textAreaProps
+      const { hasClear } = textAreaProps
 
-      const {currentValue, delayedOnChange, cancel} = useDelayedValue(value, onUpdate, delay);
+      const { currentValue, delayedOnChange, cancel } = useDelayedValue(value, onUpdate, delay);
 
       const handleUpdate = useCallback((nextValue: string) => {
             // Частый UX: hasClear хочется применять мгновенно, а не через debounce.
@@ -152,5 +152,5 @@ export function useDelayedValue<T = unknown>(
 
     useEffect(() => cancel, [cancel]);
 
-    return {currentValue, delayedOnChange, cancel, flush};
+    return { currentValue, delayedOnChange, cancel, flush };
 }

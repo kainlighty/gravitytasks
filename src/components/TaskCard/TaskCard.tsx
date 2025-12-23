@@ -1,5 +1,5 @@
 import React from 'react'
-import { TaskCardProps } from './types'
+import type { TaskCardProps } from './types';
 import clsx from "clsx";
 import './TaskCard.scss'
 

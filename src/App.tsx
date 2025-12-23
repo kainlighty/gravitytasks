@@ -1,8 +1,7 @@
-import * as React from "react";
 import { useEffect, useState } from "react";
-import AddTaskForm from "@/components/AddTaskForm";
 import { settings } from '@gravity-ui/date-utils';
 import { useTaskStore } from "@/store/useTaskStore";
+import AddTaskForm from "@/components/AddTaskForm";
 import TasksListCard from "@/components/TasksListCard";
 import TaskSidebarCard from "@/components/TaskSidebarCard";
 

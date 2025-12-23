@@ -1,9 +1,9 @@
 import React from 'react'
-import AddTaskFormProps from './types'
+import type { AddTaskFormProps } from './types'
 import { configure, DFDialog } from '@gravity-ui/dialog-fields';
-// @ts-expect-error: Так надо
-import { DFDialogProps } from "@gravity-ui/dialog-fields/types/src/dialog/Dialog/Dialog";
-import { Task } from "@/types/Task";
+// @ts-ignore: Так надо
+import type { DFDialogProps } from "@gravity-ui/dialog-fields/types/src/dialog/Dialog/Dialog";
+import type { Task } from "@/types/Task";
 import './AddTaskForm.scss'
 
 configure({

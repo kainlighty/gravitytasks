@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import SidebarItemProps from './types'
+import type { SidebarItemProps } from './types'
 import clsx from "clsx";
 import './SidebarItem.scss'
 

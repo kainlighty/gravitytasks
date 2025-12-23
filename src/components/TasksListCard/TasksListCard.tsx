@@ -1,12 +1,12 @@
 import React, { memo, useCallback, useMemo } from 'react'
-import TasksListCardProps from './types'
-import { ActionTooltip, Button, Icon, List, Text } from "@gravity-ui/uikit";
-import { Plus, TrashBin } from "@gravity-ui/icons";
-import { Task } from "@/types/Task";
+import type { TasksListCardProps } from './types'
+import { List } from "@gravity-ui/uikit";
+import type { Task } from "@/types/Task";
 import { useTaskStore } from "@/store/useTaskStore";
 import TaskItem from "@/components/TaskItem";
-import './TasksListCard.scss'
 import TaskCard from "@/components/TaskCard";
+import TasksListHeader from "@/TasksListHeader";
+import './TasksListCard.scss'
 
 export const TasksListCard = memo((props: TasksListCardProps) => {
     const { onOpenAddForm } = props;
@@ -14,7 +14,6 @@ export const TasksListCard = memo((props: TasksListCardProps) => {
     const tasks = useTaskStore(s => s.tasks);
     const selectedTaskId = useTaskStore(s => s.selectedTaskId);
     const selectTask = useTaskStore(s => s.selectTask);
-    const clearAll = useTaskStore(s => s.deleteAllTasks);
 
     const selectedItemIndex = useMemo(() => {
         if (!selectedTaskId) return undefined;
@@ -31,27 +30,7 @@ export const TasksListCard = memo((props: TasksListCardProps) => {
 
     return (
       <TaskCard className="tasks-list">
-          <header className="tasks-list__header">
-              <Text variant="subheader-3">Список задач</Text>
-              <div className="tasks-list__actions">
-                  <Button
-                    view="flat"
-                    onClick={onOpenAddForm}
-                  >
-                      <Icon data={Plus}/> Добавить
-                  </Button>
-                  <ActionTooltip
-                    title="Очистить всё"
-                  >
-                      <Button
-                        view="outlined-danger"
-                        onClick={clearAll}
-                      >
-                          <Icon data={TrashBin}/>
-                      </Button>
-                  </ActionTooltip>
-              </div>
-          </header>
+          <TasksListHeader onOpenAddForm={onOpenAddForm}/>
           <List
             className="tasks-list__items"
             itemsHeight={300}

@@ -1,6 +1,6 @@
 import React from 'react'
+import type { CommentsListProps } from './types'
 import './CommentsList.scss'
-import CommentsListProps from './types'
 import Comment from "@/components/Comments/Comment";
 
 export default function CommentsList(props: CommentsListProps) {
