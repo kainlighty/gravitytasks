@@ -1,10 +1,10 @@
 import React from 'react'
-import './AddTaskForm.scss'
 import AddTaskFormProps from './types'
 import { configure, DFDialog } from '@gravity-ui/dialog-fields';
 // @ts-expect-error: Так надо
 import { DFDialogProps } from "@gravity-ui/dialog-fields/types/src/dialog/Dialog/Dialog";
 import { Task } from "@/types/Task";
+import './AddTaskForm.scss'
 
 configure({
     lang: 'ru'
@@ -54,8 +54,8 @@ const fields: DFDialogProps['fields'] = [
 export default function AddTaskForm(props: AddTaskFormProps) {
     const {
         isOpen = false,
-      onAdd,
-      onClose
+        onAdd,
+        onClose
     } = props
 
     const stopEnterSubmit = React.useCallback((e: React.KeyboardEvent) => {

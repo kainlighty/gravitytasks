@@ -9,7 +9,7 @@ export const TagsLabels = memo((props: TagsLabelsProps) => {
     if (tags.length === 0) return null;
 
     return (
-      <Flex className="tags-list" direction="row" gap={1} maxWidth="120px">
+      <Flex className="tags-list" direction="row" gap={1}>
           {tags.map((tag) => (
             <Label
               key={tag}

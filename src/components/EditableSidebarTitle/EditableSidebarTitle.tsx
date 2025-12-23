@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useState } from 'react'
 import EditableSidebarTitleProps from './types'
-import { Flex, TextInput } from "@gravity-ui/uikit";
 import './EditableSidebarTitle.scss'
+import { DelayedTextInput } from "@gravity-ui/components";
 
 export const EditableSidebarTitle = memo((props: EditableSidebarTitleProps) => {
     const { initialValue, onSave } = props;
@@ -14,7 +14,9 @@ export const EditableSidebarTitle = memo((props: EditableSidebarTitleProps) => {
 
     const handleSave = () => {
         const trimmed = value.trim();
-        if (trimmed && trimmed !== initialValue) onSave(trimmed);
+        if (trimmed && trimmed !== initialValue) {
+            onSave(trimmed);
+        }
         setIsEdit(false);
     }
 
@@ -35,15 +37,16 @@ export const EditableSidebarTitle = memo((props: EditableSidebarTitleProps) => {
 
     if (isEdit) {
         return (
-          <Flex gap={1} className="task-sidebar__title-edit">
-              <TextInput
-                autoFocus
+          <div className="task-sidebar__title-edit">
+              <DelayedTextInput
+                delay={150}
                 value={value}
                 onUpdate={setValue}
                 onBlur={handleSave}
                 onKeyDown={e => handlePressKey(e.key)}
+                autoFocus
               />
-          </Flex>
+          </div>
         );
     }
 

@@ -4,6 +4,7 @@ import SidebarHeader from "@/components/SidebarHeader";
 import SidebarInfo from "@/components/SidebarInfo";
 import './TaskSidebarCard.scss'
 import SidebarTabs from "@/components/SidebarTabs";
+import TaskCard from "@/components/TaskCard";
 
 export const TaskSidebarCard = memo(() => {
     const selectedTaskId = useTaskStore(s => s.selectedTaskId);
@@ -14,13 +15,13 @@ export const TaskSidebarCard = memo(() => {
     if (!task) return null;
 
     return (
-      <aside className="task-card task-sidebar">
+      <TaskCard className="task-sidebar">
           <SidebarHeader/>
 
           <main className="task-sidebar__content">
               <SidebarInfo/>
               <SidebarTabs taskId={task.id}/>
           </main>
-      </aside>
+      </TaskCard>
     );
 })

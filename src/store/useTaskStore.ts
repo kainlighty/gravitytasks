@@ -76,7 +76,8 @@ export const useTaskStore = create<TaskState & TaskActions>()(
               createdAt: now,
               updatedAt: now,
               completed: false,
-              comments: taskProto.comments ?? []
+              comments: taskProto.comments ?? [],
+              tags: taskProto.tags ?? []
           };
 
           set({ tasks: [...tasks, optimisticTask] });

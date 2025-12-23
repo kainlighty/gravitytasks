@@ -3,6 +3,7 @@
   flex-direction:  row;
   align-items:     center;
   justify-content: space-between;
+  gap: var(--g-spacing-2);
 }
 
 .task-sidebar__title-row {

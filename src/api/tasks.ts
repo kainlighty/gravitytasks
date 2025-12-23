@@ -1,3 +1,5 @@
+// Думаю, знаешь откуда ветер подул
+
 import { getDateTimeNow } from "@/utility/date";
 import { TaskPatch } from "@/types/api";
 import { apiJson } from "@/utility/utils";

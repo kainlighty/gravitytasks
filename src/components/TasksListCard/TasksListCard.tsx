@@ -6,6 +6,7 @@ import { Task } from "@/types/Task";
 import { useTaskStore } from "@/store/useTaskStore";
 import TaskItem from "@/components/TaskItem";
 import './TasksListCard.scss'
+import TaskCard from "@/components/TaskCard";
 
 export const TasksListCard = memo((props: TasksListCardProps) => {
     const { onOpenAddForm } = props;
@@ -29,7 +30,7 @@ export const TasksListCard = memo((props: TasksListCardProps) => {
     ), []);
 
     return (
-      <div className="task-card tasks-list">
+      <TaskCard className="tasks-list">
           <header className="tasks-list__header">
               <Text variant="subheader-3">Список задач</Text>
               <div className="tasks-list__actions">
@@ -62,6 +63,6 @@ export const TasksListCard = memo((props: TasksListCardProps) => {
             filterPlaceholder="Найти задачу"
             renderItem={renderItem}
           />
-      </div>
+      </TaskCard>
     );
 })
