@@ -4,7 +4,6 @@ import { configure, DFDialog } from '@gravity-ui/dialog-fields';
 // @ts-ignore: Так надо
 import type { DFDialogProps } from "@gravity-ui/dialog-fields/types/src/dialog/Dialog/Dialog";
 import type { Task } from "@/types/Task";
-import './AddTaskForm.scss'
 
 configure({
     lang: 'ru'

@@ -1,5 +1,11 @@
-// GPT
-// Не до конца знаю Zustand
+/**
+ *
+ * GPT
+ *
+ * Не до конца знаю Zustand
+ *
+ * Ранее были локальные стейты, там не GPT по функциональности. Но так как был GPT - можно и скип
+**/
 
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';

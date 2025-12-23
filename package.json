@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "minify-css": "postcss \"dist/**/*.css\" --replace",
     "server": "json-server --watch db_test.json5",
-    "build-scss": "sass --update src/styles:dist/styles --no-source-map --style=expanded && npm run minify-css"
+    "build-scss": "sass --update src/styles:dist/styles --no-source-map --style=expanded && npm run minify-css",
+    "install-legacy": "npm i --legacy-peer-deps"
   },
   "overrides": {
     "@gravity-ui/components": {

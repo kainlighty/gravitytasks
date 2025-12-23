@@ -5,7 +5,7 @@ import type { Task } from "@/types/Task";
 import { useTaskStore } from "@/store/useTaskStore";
 import TaskItem from "@/components/TaskItem";
 import TaskCard from "@/components/TaskCard";
-import TasksListHeader from "@/TasksListHeader";
+import TasksListHeader from "@/components/TasksListHeader";
 import './TasksListCard.scss'
 
 export const TasksListCard = memo((props: TasksListCardProps) => {
