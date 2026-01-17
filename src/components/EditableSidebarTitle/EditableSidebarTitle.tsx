@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useCallback, useEffect, useState } from 'react'
 import type { EditableSidebarTitleProps } from './types'
 import { DelayedTextInput } from "@gravity-ui/components";
 import './EditableSidebarTitle.scss'
@@ -12,28 +12,18 @@ export const EditableSidebarTitle = memo((props: EditableSidebarTitleProps) => {
         setValue(initialValue);
     }, [initialValue]);
 
-    const handleSave = () => {
+    const handleSave = useCallback(() => {
         const trimmed = value.trim();
         if (trimmed && trimmed !== initialValue) {
             onSave(trimmed);
         }
         setIsEdit(false);
-    }
+    }, [value, setIsEdit, initialValue]);
 
-    const handleReset = () => {
+    const handleReset = useCallback(() => {
         setValue(initialValue)
         setIsEdit(false);
-    }
-
-    const handlePressKey = (key: string) => {
-        if (key === 'Enter') {
-            handleSave()
-        }
-
-        if (key === 'Escape') {
-            handleReset()
-        }
-    }
+    }, [initialValue, setIsEdit]);
 
     if (isEdit) {
         return (
@@ -43,7 +33,17 @@ export const EditableSidebarTitle = memo((props: EditableSidebarTitleProps) => {
                 value={value}
                 onUpdate={setValue}
                 onBlur={handleSave}
-                onKeyDown={e => handlePressKey(e.key)}
+                onKeyDown={e => {
+                    const key = e.key
+
+                    if (key === 'Enter') {
+                        handleSave()
+                    }
+
+                    if (key === 'Escape') {
+                        handleReset()
+                    }
+                }}
                 autoFocus
               />
           </div>

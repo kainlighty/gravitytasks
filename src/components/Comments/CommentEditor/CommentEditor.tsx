@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import type { CommentEditorProps } from './types'
 import { Button, DropdownMenu, TextArea } from "@gravity-ui/uikit";
 import './CommentEditor.scss'
@@ -11,7 +11,7 @@ export default function CommentEditor(props: CommentEditorProps) {
     const [commentText, setCommentText] = useState('');
     const [loading, setLoading] = useState(false);
 
-    const handleSend = async() => {
+    const handleSend = useCallback(async() => {
         const text = commentText.trim();
         if (!text) return;
 
@@ -22,7 +22,7 @@ export default function CommentEditor(props: CommentEditorProps) {
         } finally {
             setLoading(false);
         }
-    };
+    }, [commentText, setLoading]);
 
     return (
       <div className="comments__editor">

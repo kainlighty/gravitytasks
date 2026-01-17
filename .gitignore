@@ -25,4 +25,3 @@ dist-ssr
 *.sw?
 
 db_test.json5
-package-lock.json

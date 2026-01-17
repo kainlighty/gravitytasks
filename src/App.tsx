@@ -15,7 +15,9 @@ export const App = () => {
     const [isFormOpen, setIsFormOpen] = useState(false);
 
     useEffect(() => {
-        fetchTasks().catch(console.error);
+        fetchTasks()
+        .then(t => console.log('tasks fetched'))
+        .catch(console.error);
     }, [fetchTasks]);
 
     return (

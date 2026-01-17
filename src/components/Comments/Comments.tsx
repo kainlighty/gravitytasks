@@ -15,10 +15,9 @@ export const Comments = (props: CommentsProps) => {
     const toaster = useToaster();
 
     const comments = useTaskStore(
-      useCallback(
-        (s) => s.tasks.find((t) => t.id === taskId)?.comments ?? EMPTY_COMMENTS,
-        [taskId],
-      ),
+      useCallback(s =>
+          s.tasks.find((t) => t.id === taskId)?.comments ?? EMPTY_COMMENTS,
+        [taskId])
     );
 
     const addComment = useTaskStore((s) => s.addComment);
@@ -34,9 +33,7 @@ export const Comments = (props: CommentsProps) => {
               toaster.add({ name: 'comment-add-error', title: 'Ошибка при добавлении', theme: 'danger' });
               throw e;
           }
-      },
-      [addComment, taskId, toaster],
-    );
+      }, [addComment, taskId, toaster]);
 
     const handleDeleteComment = useCallback(
       async(commentId: string) => {
@@ -49,9 +46,7 @@ export const Comments = (props: CommentsProps) => {
                   theme: 'danger',
               });
           }
-      },
-      [deleteComment, taskId, toaster],
-    );
+      }, [deleteComment, taskId, toaster]);
 
     const handleClearAll = useCallback(
       async() => {
@@ -62,9 +57,7 @@ export const Comments = (props: CommentsProps) => {
           } catch (e) {
               console.error('Ошибка при очистке:', e);
           }
-      },
-      [deleteAllComments, taskId, toaster],
-    );
+      }, [deleteAllComments, taskId, toaster]);
 
     return (
       <div className="task-sidebar__comments comments">

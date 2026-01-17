@@ -9,7 +9,7 @@ configure({
     lang: 'ru'
 })
 
-export type FormValues = Pick<
+type FormValues = Pick<
   Task,
   "name" | "deadline" | "important" | "tags" | "description"
 >;

@@ -1,3 +1,1 @@
-import { DelayedTextArea } from './DelayedTextArea'
-
-export default DelayedTextArea
+export { default } from './DelayedTextArea'

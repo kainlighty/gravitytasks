@@ -4,7 +4,7 @@
  * Перебивка: https://preview.gravity-ui.com/components/?path=/story/components-delayedtextinput--default
  */
 
-import { type ChangeEvent, forwardRef, useCallback, useEffect, useRef, useState } from "react";
+import { type ChangeEvent, forwardRef, memo, useCallback, useEffect, useRef, useState } from "react";
 import { TextArea } from '@gravity-ui/uikit';
 import type { DelayedTextAreaProps } from './types';
 
@@ -51,6 +51,8 @@ export const DelayedTextArea = forwardRef<HTMLTextAreaElement, DelayedTextAreaPr
       );
   },
 );
+
+export default memo(DelayedTextArea);
 
 export function useDelayedValue<T = unknown>(
   value: T,

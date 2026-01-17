@@ -4,14 +4,12 @@ import { dateTime } from "@gravity-ui/date-utils";
 import { DatePicker } from "@gravity-ui/date-components";
 import SidebarItem from "@/components/SidebarItem";
 import TagManager from "@/components/TagManager";
-import DelayedTextArea from "@/components/DelayedTextArea";
 import './SidebarInfo.scss'
+import { TextArea } from "@gravity-ui/uikit";
 
 export const SidebarInfo = memo(() => {
     const selectedTaskId = useTaskStore(s => s.selectedTaskId);
-    const task = useTaskStore(s =>
-      s.tasks.find(t => t.id === selectedTaskId)
-    );
+    const task = useTaskStore(s => s.tasks.find(t => t.id === selectedTaskId));
     const updateTask = useTaskStore(s => s.updateTask);
 
     const [description, setDescription] = useState('');
@@ -25,19 +23,13 @@ export const SidebarInfo = memo(() => {
     const handleDescUpdate = useCallback((val: string) => {
           setDescription(val);
 
-
           const next = val.trimStart();
           const prev = (description ?? '');
 
           if (task && next !== prev) {
               updateTask(task.id, { description: next }).catch(console.error);
           }
-
-
-          console.log(val)
-      },
-      [task?.description],
-    );
+      }, [task?.description]);
 
     // const deadline = task.deadline ? dateTime({ input: task.deadline, format: 'DD.MM.YYYY' }) : undefined;
 
@@ -79,11 +71,11 @@ export const SidebarInfo = memo(() => {
             className="task-sidebar__item--description"
             label="Описание"
             value={
-                <DelayedTextArea
-                  delay={400}
+                <TextArea
                   view="clear"
                   value={description}
-                  onUpdate={handleDescUpdate}
+                  onUpdate={setDescription}
+                  onBlur={e => handleDescUpdate(e.target.value)}
                   autoFocus={false}
                   placeholder="—"
                   rows={3}

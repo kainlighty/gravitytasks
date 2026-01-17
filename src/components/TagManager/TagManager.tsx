@@ -1,4 +1,4 @@
-import React, { memo, useRef, useState } from 'react'
+import React, { memo, useCallback, useRef, useState } from 'react'
 import type { TagManagerProps } from './types'
 import { Button, Flex, Icon, Popup, TextInput } from "@gravity-ui/uikit";
 import { Plus } from "@gravity-ui/icons";
@@ -11,12 +11,12 @@ export const TagManager = memo((props: TagManagerProps) => {
     const [newTag, setNewTag] = useState('');
     const btnRef = useRef<HTMLButtonElement>(null);
 
-    const addTag = () => {
+    const addTag = useCallback(() => {
         const val = newTag.trim();
         if (val && !tags.includes(val)) onUpdate([...tags, val]);
         setNewTag('');
         setPopupOpen(false);
-    };
+    }, [newTag])
 
     return (
       <div className="tag-manager">

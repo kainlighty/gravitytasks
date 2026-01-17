@@ -25,32 +25,30 @@ const Main = () => {
     const [isGradientBackground, setIsGradientBackground] = useState(true);
 
     return (
-      <React.StrictMode>
-          <ThemeProvider
-            rootClassName={clsx(isGradientBackground && "glass-gradient__background")}
-            theme="dark-hc"
-            lang="ru"
-          >
-              <ToasterProvider toaster={toaster}>
-                  <App/>
-                  {/*Временно, для теста*/}
-                  <ActionTooltip
-                    openDelay={100}
-                    title="Прозрачность"
+      <ThemeProvider
+        rootClassName={clsx(isGradientBackground && "glass-gradient__background")}
+        theme="dark-hc"
+        lang="ru"
+      >
+          <ToasterProvider toaster={toaster}>
+              <App/>
+              {/*Временно, для теста*/}
+              <ActionTooltip
+                openDelay={100}
+                title="Прозрачность"
+              >
+                  <Button
+                    id="switch-glass-gradient-btn"
+                    onClick={() => {
+                        setIsGradientBackground(!isGradientBackground);
+                    }}
                   >
-                      <Button
-                        id="switch-glass-gradient-btn"
-                        onClick={() => {
-                            setIsGradientBackground(!isGradientBackground);
-                        }}
-                      >
-                          <Icon data={LayoutColumns}/>
-                      </Button>
-                  </ActionTooltip>
-                  <ToasterComponent/>
-              </ToasterProvider>
-          </ThemeProvider>
-      </React.StrictMode>
+                      <Icon data={LayoutColumns}/>
+                  </Button>
+              </ActionTooltip>
+              <ToasterComponent/>
+          </ToasterProvider>
+      </ThemeProvider>
     )
 }
 
