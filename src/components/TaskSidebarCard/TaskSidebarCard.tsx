@@ -6,7 +6,7 @@ import SidebarTabs from "@/components/SidebarTabs";
 import TaskCard from "@/components/TaskCard";
 import './TaskSidebarCard.scss'
 
-export const TaskSidebarCard = memo(() => {
+export const TaskSidebarCard = () => {
     const selectedTaskId = useTaskStore(s => s.selectedTaskId);
     const task = useTaskStore(s =>
       s.selectedTaskId ? s.tasks.find(t => t.id === selectedTaskId) ?? null : null
@@ -24,4 +24,6 @@ export const TaskSidebarCard = memo(() => {
           </main>
       </TaskCard>
     );
-})
+}
+
+export default memo(TaskSidebarCard);

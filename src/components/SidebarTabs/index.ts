@@ -1,3 +1,1 @@
-import { SidebarTabs } from './SidebarTabs'
-
-export default SidebarTabs
+export { default } from './SidebarTabs'

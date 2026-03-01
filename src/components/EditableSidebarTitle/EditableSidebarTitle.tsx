@@ -3,7 +3,7 @@ import type { EditableSidebarTitleProps } from './types'
 import { DelayedTextInput } from "@gravity-ui/components";
 import './EditableSidebarTitle.scss'
 
-export const EditableSidebarTitle = memo((props: EditableSidebarTitleProps) => {
+export const EditableSidebarTitle = (props: EditableSidebarTitleProps) => {
     const { initialValue, onSave } = props;
     const [isEdit, setIsEdit] = useState(false);
     const [value, setValue] = useState(initialValue);
@@ -53,9 +53,11 @@ export const EditableSidebarTitle = memo((props: EditableSidebarTitleProps) => {
     return (
       <span
         className="task-sidebar__title-text"
-        onDoubleClick={() => setIsEdit(true)}
+        onClick={() => setIsEdit(true)}
       >
             {initialValue}
         </span>
     );
-})
+}
+
+export default memo(EditableSidebarTitle)

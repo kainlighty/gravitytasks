@@ -1,3 +1,1 @@
-import { TagsTooltip } from './TagsTooltip'
-
-export default TagsTooltip
+export { default } from './TagsTooltip'

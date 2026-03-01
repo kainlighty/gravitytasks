@@ -1,3 +1,1 @@
-import CommentsList from './CommentsList'
-
-export default CommentsList
+export { default } from './CommentsList'

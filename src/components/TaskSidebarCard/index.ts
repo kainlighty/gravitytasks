@@ -1,3 +1,1 @@
-import { TaskSidebarCard } from './TaskSidebarCard'
-
-export default TaskSidebarCard
+export { default } from './TaskSidebarCard'

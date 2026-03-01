@@ -7,7 +7,7 @@ import TagManager from "@/components/TagManager";
 import './SidebarInfo.scss'
 import { TextArea } from "@gravity-ui/uikit";
 
-export const SidebarInfo = memo(() => {
+export const SidebarInfo = () => {
     const selectedTaskId = useTaskStore(s => s.selectedTaskId);
     const task = useTaskStore(s => s.tasks.find(t => t.id === selectedTaskId));
     const updateTask = useTaskStore(s => s.updateTask);
@@ -85,4 +85,6 @@ export const SidebarInfo = memo(() => {
           />
       </div>
     );
-})
+}
+
+export default memo(SidebarInfo);

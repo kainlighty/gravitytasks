@@ -1,3 +1,1 @@
-import { TagsLabels } from './TagsLabels'
-
-export default TagsLabels
+export { default } from './TagsLabels'

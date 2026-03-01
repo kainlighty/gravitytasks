@@ -6,7 +6,7 @@ import { DiamondExclamationFill, SquareCheck, TrashBin, Xmark } from "@gravity-u
 import EditableSidebarTitle from "@/components/EditableSidebarTitle";
 import './SidebarHeader.scss'
 
-export const SidebarHeader = memo(() => {
+export const SidebarHeader = () => {
     const task = useTaskStore(s =>
       s.selectedTaskId ? s.tasks.find(t => t.id === s.selectedTaskId)! : null
     );
@@ -51,4 +51,6 @@ export const SidebarHeader = memo(() => {
           </div>
       </header>
     );
-})
+}
+
+export default memo(SidebarHeader);

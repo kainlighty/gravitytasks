@@ -5,7 +5,7 @@ import { Plus } from "@gravity-ui/icons";
 import TagsLabels from "@/components/TagsLabels";
 import './TagManager.scss'
 
-export const TagManager = memo((props: TagManagerProps) => {
+export const TagManager = (props: TagManagerProps) => {
     const { tags, onUpdate } = props;
     const [popupOpen, setPopupOpen] = useState(false);
     const [newTag, setNewTag] = useState('');
@@ -58,4 +58,6 @@ export const TagManager = memo((props: TagManagerProps) => {
           </Popup>
       </div>
     );
-});
+}
+
+export default memo(TagManager);

@@ -4,7 +4,7 @@ import { Label, Tooltip } from "@gravity-ui/uikit";
 import TagsLabels from "@/components/TagsLabels";
 import './TagsTooltip.scss'
 
-export const TagsTooltip = memo((props: TagsTooltipProps) => {
+export const TagsTooltip = (props: TagsTooltipProps) => {
     const { tags, count } = props;
     return (
       <Tooltip
@@ -14,4 +14,6 @@ export const TagsTooltip = memo((props: TagsTooltipProps) => {
           <Label className="task-item__tag-counter" theme="unknown">+{count}</Label>
       </Tooltip>
     );
-})
+}
+
+export default memo(TagsTooltip);

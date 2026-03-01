@@ -3,7 +3,7 @@ import type { SidebarItemProps } from './types'
 import clsx from "clsx";
 import './SidebarItem.scss'
 
-export const SidebarItem = memo((props: SidebarItemProps) => {
+export const SidebarItem = (props: SidebarItemProps) => {
     const { className, label, labelClassName, value = '–', valueClassName } = props;
     return (
       <div className={clsx("task-sidebar__item", className)}>
@@ -11,4 +11,6 @@ export const SidebarItem = memo((props: SidebarItemProps) => {
           <span className={clsx("task-sidebar__item-value", valueClassName)}>{value}</span>
       </div>
     );
-})
+}
+
+export default memo(SidebarItem);

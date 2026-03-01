@@ -1,3 +1,1 @@
-import TasksListHeader from './TasksListHeader'
-
-export default TasksListHeader
+export { default } from './TasksListHeader'

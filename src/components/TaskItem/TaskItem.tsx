@@ -6,7 +6,7 @@ import { DiamondExclamationFill, TrashBin } from "@gravity-ui/icons";
 import TagsTooltip from "@/components/TagsTooltip";
 import './TaskItem.scss'
 
-export const TaskItem = memo((props: TaskItemProps) => {
+export const TaskItem = (props: TaskItemProps) => {
     const { task } = props;
     const { id, completed, important, name, deadline, tags = [] } = task;
 
@@ -52,4 +52,6 @@ export const TaskItem = memo((props: TaskItemProps) => {
           </Button>
       </div>
     );
-})
+}
+
+export default memo(TaskItem);

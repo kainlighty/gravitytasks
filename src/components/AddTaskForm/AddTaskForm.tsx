@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import type { AddTaskFormProps } from './types'
 import { configure, DFDialog } from '@gravity-ui/dialog-fields';
 // @ts-ignore: Так надо
@@ -50,7 +50,7 @@ const fields: DFDialogProps['fields'] = [
     },
 ]
 
-export default function AddTaskForm(props: AddTaskFormProps) {
+export const AddTaskForm = (props: AddTaskFormProps) => {
     const {
         isOpen = false,
         onAdd,
@@ -66,6 +66,8 @@ export default function AddTaskForm(props: AddTaskFormProps) {
 
         e.preventDefault();
     }, []);
+
+    if(!isOpen) return null
 
     return (
       <div onKeyDown={stopEnterSubmit}>
@@ -92,3 +94,5 @@ export default function AddTaskForm(props: AddTaskFormProps) {
       </div>
     );
 }
+
+export default memo(AddTaskForm);

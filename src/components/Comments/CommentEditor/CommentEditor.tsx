@@ -1,11 +1,11 @@
-import React, { useCallback, useState } from 'react'
+import React, { memo, useCallback, useState } from 'react'
 import type { CommentEditorProps } from './types'
 import { Button, DropdownMenu, TextArea } from "@gravity-ui/uikit";
 import './CommentEditor.scss'
 
 // TODO: Потом впилить https://gravity-ui.com/ru/libraries/markdown-editor
 
-export default function CommentEditor(props: CommentEditorProps) {
+export const CommentEditor = (props: CommentEditorProps) => {
     const { onSend, onClearAll, hasComments } = props
 
     const [commentText, setCommentText] = useState('');
@@ -58,3 +58,5 @@ export default function CommentEditor(props: CommentEditorProps) {
       </div>
     );
 }
+
+export default memo(CommentEditor);

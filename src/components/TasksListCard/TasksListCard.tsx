@@ -8,7 +8,7 @@ import TaskCard from "@/components/TaskCard";
 import TasksListHeader from "@/components/TasksListHeader";
 import './TasksListCard.scss'
 
-export const TasksListCard = memo((props: TasksListCardProps) => {
+export const TasksListCard = (props: TasksListCardProps) => {
     const { onOpenAddForm } = props;
 
     const tasks = useTaskStore(s => s.tasks);
@@ -44,4 +44,6 @@ export const TasksListCard = memo((props: TasksListCardProps) => {
           />
       </TaskCard>
     );
-})
+}
+
+export default memo(TasksListCard);

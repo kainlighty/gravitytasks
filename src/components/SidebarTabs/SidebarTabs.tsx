@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import type { SidebarTabsProps } from './types'
 import { Tab, TabList, TabPanel, TabProvider } from "@gravity-ui/uikit";
 import Comments from "@/components/Comments";
@@ -26,3 +26,5 @@ export const SidebarTabs = (props: SidebarTabsProps) => {
       </div>
     );
 }
+
+export default memo(SidebarTabs);

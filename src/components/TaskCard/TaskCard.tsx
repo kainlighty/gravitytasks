@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import type { TaskCardProps } from './types';
 import clsx from "clsx";
 import './TaskCard.scss'
@@ -15,3 +15,5 @@ export const TaskCard = (props: TaskCardProps) => {
       </div>
     );
 }
+
+export default memo(TaskCard);

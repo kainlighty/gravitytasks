@@ -1,3 +1,1 @@
-import { EditableSidebarTitle } from './EditableSidebarTitle'
-
-export default EditableSidebarTitle
+export { default } from './EditableSidebarTitle'

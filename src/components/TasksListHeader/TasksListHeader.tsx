@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { memo } from 'react'
 import './TasksListHeader.scss'
 import type { TasksListHeaderProps } from './types'
 import { ActionTooltip, Button, Icon, Text } from "@gravity-ui/uikit";
 import { Plus, TrashBin } from "@gravity-ui/icons";
 import { useTaskStore } from "@/store/useTaskStore";
 
-export default function TasksListHeader(props: TasksListHeaderProps) {
+export const TasksListHeader = (props: TasksListHeaderProps) => {
     const { onOpenAddForm } = props;
 
     const clearAll = useTaskStore(s => s.deleteAllTasks);
@@ -34,3 +34,5 @@ export default function TasksListHeader(props: TasksListHeaderProps) {
       </header>
     );
 }
+
+export default memo(TasksListHeader);

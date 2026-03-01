@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { memo } from 'react'
 import type { CommentsListProps } from './types'
 import './CommentsList.scss'
 import Comment from "@/components/Comments/Comment";
 
-export default function CommentsList(props: CommentsListProps) {
+export const CommentsList = (props: CommentsListProps) => {
     const { comments, onDelete } = props
 
     return (
@@ -19,3 +19,5 @@ export default function CommentsList(props: CommentsListProps) {
       </div>
     );
 }
+
+export default memo(CommentsList);

@@ -3,7 +3,7 @@ import type { TagsLabelsProps } from './types'
 import { Flex, Label } from "@gravity-ui/uikit";
 import './TagsLabels.scss'
 
-export const TagsLabels = memo((props: TagsLabelsProps) => {
+export const TagsLabels = (props: TagsLabelsProps) => {
     const { tags, onCloseClick } = props;
 
     if (tags.length === 0) return null;
@@ -23,4 +23,6 @@ export const TagsLabels = memo((props: TagsLabelsProps) => {
           ))}
       </Flex>
     );
-});
+}
+
+export default memo(TagsLabels);

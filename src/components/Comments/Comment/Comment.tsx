@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { memo } from 'react'
 import type { CommentProps } from './types'
 import { Button, Icon } from "@gravity-ui/uikit";
 import { TrashBin } from "@gravity-ui/icons";
 import clsx from "clsx";
 import './Comment.scss'
 
-export default function Comment(props: CommentProps) {
+export const Comment = (props: CommentProps) => {
     const {
         className,
         comment,
@@ -27,3 +27,5 @@ export default function Comment(props: CommentProps) {
       </div>
     );
 }
+
+export default memo(Comment);

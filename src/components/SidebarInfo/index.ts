@@ -1,3 +1,1 @@
-import { SidebarInfo } from './SidebarInfo'
-
-export default SidebarInfo
+export { default } from './SidebarInfo'
